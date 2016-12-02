@@ -2,8 +2,10 @@ package com.example.ws.firstproject;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    TextView tv_show_order; //显示订单
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

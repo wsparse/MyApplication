@@ -10,8 +10,65 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.ws.firstproject.MainActivity">
 
+
+    <LinearLayout
+        android:id="@+id/ll_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        >
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="myClick"
+            android:text="查询订单"/>
+        <Button
+            android:id="@+id/btn_create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="myClick"
+            android:text="生成二维码"
+            />
+        <Button
+            android:id="@+id/btn_parse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="myClick"
+            android:text="解析二维码"/>
+    </LinearLayout>
     <TextView
+        android:id="@+id/tv_show_order"
+        android:layout_below="@+id/ll_header"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="显示订单"/>
+    <EditText
+        android:id="@+id/edt_order"
+        android:layout_below="@+id/tv_show_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入要生成二维码的订单号"/>
+    <ImageView
+        android:id="@+id/iv_code"
+        android:layout_width="400px"
+        android:layout_height="400px"
+        android:layout_below="@id/edt_order"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher"/>
+    <TextView
+        android:id="@+id/tv_show_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_code"
+        android:text="显示结果"/>
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_show_result"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:text="result"/>
 </RelativeLayout>
