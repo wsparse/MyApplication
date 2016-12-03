@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public int  reduce(int a ,int b){
-        return  a-b-1;
+        return  a-b+2;//新版本
     }
 
     public void myClick(View view){
