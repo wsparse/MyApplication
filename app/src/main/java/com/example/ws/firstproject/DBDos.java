@@ -15,13 +15,14 @@ import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
  * Created by WS on 2016/12/2.
  */
 
-public class DBDos {
+public class DBDos{
     SQLiteDatabase db;
     DataHelper dataHelper;
 
-    public DBDos(Context context) {
-        dataHelper = new DataHelper(context, "order.db", null, 1);
-        db = dataHelper.getReadableDatabase();
+
+    public DBDos(Context context){
+        dataHelper = new DataHelper(context,"order.db",null,1);
+        db = dataHelper.getWritableDatabase();
     }
 
     public void insertListToDB(List<OrderEntity> entityList){

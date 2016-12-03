@@ -26,7 +26,7 @@ public class DataHelper extends SQLiteOpenHelper {
                  +TableContants.RECIVER+" varchar(10), "
                  +TableContants.RECIVER_NUM+" varchar(10), "
                  +TableContants.SEND_DATE+" varchar(10), "
-                 +TableContants.ORDER_NOTE+" varchar(10)) ";
+                 +TableContants.ORDER_NOTE+" varchar(10)) ;";
 
         String sqlDetailTable = "create table "
                 +TableContants.DETAIL_TABLE+"("
@@ -46,7 +46,7 @@ public class DataHelper extends SQLiteOpenHelper {
                 +TableContants.START_TEMPERATURE+" varchar(10),"
                 +TableContants.END_TEMPERATURE+" varchar(10),"
                 +TableContants.PRODUCT_NUM+" varchar(10), "
-                +TableContants.DETAIL_NOTE+" varchar(10) ";
+                +TableContants.DETAIL_NOTE+" varchar(10) );";
         db.execSQL(sqlOrderTable);
         db.execSQL(sqlDetailTable);
         Log.e("ws","创建了两张表");

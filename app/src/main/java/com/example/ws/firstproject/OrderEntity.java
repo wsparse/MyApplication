@@ -91,5 +91,18 @@ public class OrderEntity {
         }
     }
 
-
+    @Override
+    public String toString() {
+        return "OrderEntity{" +
+                "sender_num='" + sender_num + '\'' +
+                ", order_num='" + order_num + '\'' +
+                ", sender='" + sender + '\'' +
+                ", sender_phone='" + sender_phone + '\'' +
+                ", reciver='" + reciver + '\'' +
+                ", reciver_num='" + reciver_num + '\'' +
+                ", send_date='" + send_date + '\'' +
+                ", order_note='" + order_note + '\'' +
+                ", detailList=" + detailList +
+                '}';
+    }
 }
