@@ -88,16 +88,16 @@ public final class ViewfinderView extends View {
 
         // 扫描框的宽度
         CameraManager.FRAME_WIDTH = (int) ta.getDimension(R.styleable.innerrect_inner_width, DisplayUtil.screenWidthPx / 2);
-        CameraManager.FRAME_WIDTH = CameraManager.FRAME_WIDTH *3/2;
+
         // 扫描框的高度
         CameraManager.FRAME_HEIGHT = (int) ta.getDimension(R.styleable.innerrect_inner_height, DisplayUtil.screenWidthPx / 2);
-        CameraManager.FRAME_HEIGHT = CameraManager.FRAME_HEIGHT *3/2;
+
         // 扫描框边角颜色
-        innercornercolor = ta.getColor(R.styleable.innerrect_inner_corner_color, Color.parseColor("#FF601C"));
+        innercornercolor = ta.getColor(R.styleable.innerrect_inner_corner_color, Color.parseColor("#45DDDD"));
         // 扫描框边角长度
         innercornerlength = (int) ta.getDimension(R.styleable.innerrect_inner_corner_length, 65);
         // 扫描框边角宽度
-        innercornerwidth = (int) ta.getDimension(R.styleable.innerrect_inner_corner_width, 5);
+        innercornerwidth = (int) ta.getDimension(R.styleable.innerrect_inner_corner_width, 15);
 
         // 扫描bitmap
         Drawable drawable = ta.getDrawable(R.styleable.innerrect_inner_scan_bitmap);
@@ -108,6 +108,8 @@ public final class ViewfinderView extends View {
         scanLight = BitmapFactory.decodeResource(getResources(), ta.getResourceId(R.styleable.innerrect_inner_scan_bitmap, R.drawable.scan_light));
         // 扫描速度
         SCAN_VELOCITY = ta.getInt(R.styleable.innerrect_inner_scan_speed, 5);
+
+        isCircle = ta.getBoolean(R.styleable.innerrect_inner_scan_iscircle, true);
 
         ta.recycle();
     }
@@ -147,15 +149,21 @@ public final class ViewfinderView extends View {
                 lastPossibleResultPoints = currentPossible;
                 paint.setAlpha(OPAQUE);
                 paint.setColor(resultPointColor);
-                for (ResultPoint point : currentPossible) {
-                    canvas.drawCircle(frame.left + point.getX(), frame.top + point.getY(), 6.0f, paint);
+
+                if (isCircle) {
+                    for (ResultPoint point : currentPossible) {
+                        canvas.drawCircle(frame.left + point.getX(), frame.top + point.getY(), 6.0f, paint);
+                    }
                 }
             }
             if (currentLast != null) {
                 paint.setAlpha(OPAQUE / 2);
                 paint.setColor(resultPointColor);
-                for (ResultPoint point : currentLast) {
-                    canvas.drawCircle(frame.left + point.getX(), frame.top + point.getY(), 3.0f, paint);
+
+                if (isCircle) {
+                    for (ResultPoint point : currentLast) {
+                        canvas.drawCircle(frame.left + point.getX(), frame.top + point.getY(), 3.0f, paint);
+                    }
                 }
             }
 
@@ -168,7 +176,9 @@ public final class ViewfinderView extends View {
     // 扫描线移动速度
     private int SCAN_VELOCITY;
     // 扫描线
-    Bitmap scanLight;
+    private Bitmap scanLight;
+    // 是否展示小圆点
+    private boolean isCircle;
 
     /**
      * 绘制移动扫描线

@@ -23,6 +23,7 @@ public class DBDos{
     public DBDos(Context context){
         dataHelper = new DataHelper(context,"order.db",null,1);
         db = dataHelper.getWritableDatabase();
+        Log.e("ws","执行了构造DBDos对象");
     }
 
     public void insertListToDB(List<OrderEntity> entityList){
@@ -76,7 +77,7 @@ public class DBDos{
         return entityList;
     }
 
-    public synchronized void insertOrderEntity(OrderEntity orderEntity){
+        public synchronized void insertOrderEntity(OrderEntity orderEntity){
         //String sql = "insert into "+TableContants.ORDRE_TABLE+" values()";
         db.beginTransaction();
         try {

@@ -56,7 +56,7 @@ public class CodeUtils {
         Bitmap mBitmap = BitmapFactory.decodeFile(path, options);
         options.inJustDecodeBounds = false; // 获取新的大小
 
-        int sampleSize = (int) (options.outHeight / (float) 1000);
+        int sampleSize = (int) (options.outHeight / (float) 400);
 
         if (sampleSize <= 0)
             sampleSize = 1;
@@ -205,14 +205,18 @@ public class CodeUtils {
     public static void isLightEnable(boolean isEnable) {
         if (isEnable) {
             Camera camera = CameraManager.get().getCamera();
-            Camera.Parameters parameter = camera.getParameters();
-            parameter.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-            camera.setParameters(parameter);
+            if (camera != null) {
+                Camera.Parameters parameter = camera.getParameters();
+                parameter.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+                camera.setParameters(parameter);
+            }
         } else {
             Camera camera = CameraManager.get().getCamera();
-            Camera.Parameters parameter = camera.getParameters();
-            parameter.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
-            camera.setParameters(parameter);
+            if (camera != null) {
+                Camera.Parameters parameter = camera.getParameters();
+                parameter.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+                camera.setParameters(parameter);
+            }
         }
     }
 }

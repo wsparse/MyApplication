@@ -13,6 +13,7 @@ public class DataHelper extends SQLiteOpenHelper {
 
     public DataHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
+        Log.e("ws","执行了构建DataHelper对象！");
     }
 
     @Override

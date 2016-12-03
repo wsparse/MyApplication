@@ -36,15 +36,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dbDos  = new DBDos(this);
+
         initView();
         initData();
     }
 
     private void initData() {
+        dbDos  = new DBDos(this);
         SharedPreferences sp = getSharedPreferences("config", Context.MODE_PRIVATE);
         boolean haveData = sp.getBoolean("haveData", false);
         if(!haveData){
+
             //第一条OrderEntity实体类对象的创建
             List<OrderEntity.Detail> detailList1 = new ArrayList<>();
             OrderEntity.Detail detail1 = new OrderEntity.Detail("20161201","1001","微观经济学",null,null,"本","2","56$",null,null,null,null,null,null,null,"书本");
@@ -80,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
             edit.putBoolean("haveData",true);
             edit.commit();
             Log.e("ws","提交添加成功数据成功的布尔值！");
+        }else{
+            Log.e("ws","实现了数据的持久化无需再次为数据库添加数据！");
         }
     }
 
